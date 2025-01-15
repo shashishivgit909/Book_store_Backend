@@ -31,12 +31,11 @@ main().then(() => console.log("mongoose datbase connected success")).catch((err)
 
 
 app.use("/api", router);
+
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
 app.listen(port, () => {
-    console.log(`server running on: http://localhost:${port}`)
+    console.log(`Example app listening on port ${port}`)
 })
-
-
