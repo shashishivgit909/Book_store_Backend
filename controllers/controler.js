@@ -2,7 +2,7 @@ import BookModel from "../model/book.model.js";
 
 export const postABook = async (req, res) => {
     try {
-        const newBook = await BookModel({...req.body});
+        const newBook = await BookModel(req.body);
         await newBook.save();
         res.status(200).send({message: "Book posted successfully", book: newBook})
     } catch (error) {

@@ -1,21 +1,21 @@
 import { Schema, model } from "mongoose";
 
-const BookSchema = new Schema({
+const BookSchema=new Schema({
     title: {
         type: String,
         required: true,
     },
-    description: {
+    description:  {
         type: String,
         required: true,
     },
-    category: {
+    category:  {
         type: String,
         required: true,
     },
     trending: {
         type: Boolean,
-        default: false,
+        required: true,
     },
     coverImage: {
         type: String,
@@ -28,8 +28,10 @@ const BookSchema = new Schema({
     newPrice: {
         type: Number,
         required: true,
-    },
-});
+    }
+  }, {
+    timestamps: true,
+  });
 
 const BookModel = model("Book", BookSchema);
 
