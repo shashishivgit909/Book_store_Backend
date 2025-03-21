@@ -1,4 +1,5 @@
 import BookModel from "../model/book.model.js";
+import OrderModel from "../model/order.model.js";
 
 export const postABook = async (req, res) => {
     try {
@@ -73,3 +74,30 @@ export const deleteABook = async (req, res) => {
         res.status(500).send({message: "Failed to delete a book"})
     }
 };
+
+export const createAOrder = async (req, res) => {
+    try {
+      const newOrder =  await OrderModel(req.body);
+      const savedOrder = await newOrder.save();
+      res.status(200).json(savedOrder);
+    } catch (error) {
+      console.error("Error creating order", error);
+      res.status(500).json({ message: "Failed to create order" });
+    }
+  };
+  
+  
+ export const getOrderByEmail = async (req, res) => {
+    try {
+      const {email} = req.params;
+      console.log(email,"email")
+      const orders = await OrderModel.find({email}).sort({createdAt: -1});
+      if(!orders) {
+        return res.status(404).json({ message: "Order not found" });
+      }
+      res.status(200).json(orders);
+    } catch (error) {
+      console.error("Error fetching orders", error);
+      res.status(500).json({ message: "Failed to fetch order" });
+    }
+  }
