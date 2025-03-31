@@ -1,0 +1,1 @@
+Note : in packgae.json , we  have to add script by ourself: 
