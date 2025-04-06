@@ -14,8 +14,10 @@ const port = 4000;
 // Enhanced CORS configuration
 app.use(cors({
     origin: "http://localhost:5173", // Replace with your frontend's URL
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"], // Allowed methods
     allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+    // origin: '*',     // THIS ALL NOR WORKS , NED TO SPECIFY AS ABOVE
+    // methods: '*',
     credentials: true // Allow credentials (cookies, authorization headers, etc.)
 }));
 
